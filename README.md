@@ -22,7 +22,7 @@
 
 **Construindo com intenção. Aprendendo continuamente.**
 
-<sub>Perfil atualizado automaticamente • Gráficos SVG autorais • Tema claro suave, sem animações</sub>
+<sub>Perfil atualizado automaticamente • Gráficos SVG autorais • Tema grafite suave, sem animações</sub>
 
 </div>
 
