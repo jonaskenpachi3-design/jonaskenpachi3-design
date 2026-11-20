@@ -63,29 +63,28 @@ while cursor >= month_start and by_date.get(cursor.isoformat(), 0) > 0:
     streak += 1
     cursor -= dt.timedelta(days=1)
 
-# Grade semanal com domingo na primeira linha.
+# Faixa horizontal com um bloco por dia do mês.
 first_offset = (month_start.weekday() + 1) % 7
 palette = ["#172536", "#164e63", "#0e7490", "#0891b2", "#67e8f9"]
 cells = []
 for day in days:
     date = dt.date.fromisoformat(day["date"])
-    index = first_offset + date.day - 1
-    col, row = index // 7, index % 7
+    col, row = date.day - 1, 0
     count = int(day["contributionCount"])
     level = 0 if count == 0 else 1 if count <= 2 else 2 if count <= 5 else 3 if count <= 9 else 4
-    x, y = 44 + col * 25, 153 + row * 23
+    x, y = 44 + col * 36, 153
     cells.append(
-        f'<rect x="{x}" y="{y}" width="17" height="17" rx="4" fill="{palette[level]}">'
+        f'<rect x="{x}" y="{y}" width="22" height="22" rx="4" fill="{palette[level]}">'
         f'<title>{date.isoformat()}: {count} contribuições</title></rect>'
     )
 grid = "".join(cells)
 month_label = today.strftime("%m / %Y")
-svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="t d">
+svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="t d">
 <title id="t">Atividade no GitHub — {month_label}</title>
 <desc id="d">{calendar['totalContributions']} contribuições no mês, {active_days} dias ativos e sequência corrente de {streak} dias.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101b29"/><stop offset="1" stop-color="#0b1420"/></linearGradient></defs>
 <style>@media(prefers-reduced-motion:reduce){{*{{animation:none!important}}}}</style>
-<rect x="3" y="3" width="1194" height="354" rx="16" fill="url(#bg)" stroke="#29384b"/>
+<rect x="3" y="3" width="1194" height="254" rx="16" fill="url(#bg)" stroke="#29384b"/>
 <text x="34" y="43" fill="#e2e8f0" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">ATIVIDADE NO GITHUB</text>
 <text x="1166" y="42" text-anchor="end" fill="#8193a8" font-family="Arial,sans-serif" font-size="12">{month_label}</text>
 <path d="M34 58H1166" stroke="#29384b"/>
@@ -98,8 +97,8 @@ svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" view
 <text x="760" y="103" fill="#f1f5f9" font-family="Arial,sans-serif" font-size="25" font-weight="700">{best_day}</text>
 <text x="760" y="124" fill="#8294aa" font-family="Arial,sans-serif" font-size="12">DIA MAIS ATIVO</text>
 {grid}
-<text x="44" y="337" fill="#71839a" font-family="Arial,sans-serif" font-size="11">* Sequência contabilizada dentro do mês atual.</text>
-<g transform="translate(1000 324)"><text x="0" y="10" fill="#71839a" font-family="Arial,sans-serif" font-size="11">MENOS</text><rect x="52" y="0" width="13" height="13" rx="3" fill="#172536"/><rect x="72" y="0" width="13" height="13" rx="3" fill="#164e63"/><rect x="92" y="0" width="13" height="13" rx="3" fill="#0e7490"/><rect x="112" y="0" width="13" height="13" rx="3" fill="#0891b2"/><rect x="132" y="0" width="13" height="13" rx="3" fill="#67e8f9"/><text x="153" y="10" fill="#71839a" font-family="Arial,sans-serif" font-size="11">MAIS</text></g>
+<text x="44" y="220" fill="#71839a" font-family="Arial,sans-serif" font-size="11">* Sequência contabilizada dentro do mês atual.</text>
+<g transform="translate(900 207)"><text x="0" y="10" fill="#71839a" font-family="Arial,sans-serif" font-size="11">MENOS</text><rect x="52" y="0" width="13" height="13" rx="3" fill="#172536"/><rect x="72" y="0" width="13" height="13" rx="3" fill="#164e63"/><rect x="92" y="0" width="13" height="13" rx="3" fill="#0e7490"/><rect x="112" y="0" width="13" height="13" rx="3" fill="#0891b2"/><rect x="132" y="0" width="13" height="13" rx="3" fill="#67e8f9"/><text x="153" y="10" fill="#71839a" font-family="Arial,sans-serif" font-size="11">MAIS</text></g>
 </svg>
 """
 Path("assets/contributions.svg").write_text(svg, encoding="utf-8")
