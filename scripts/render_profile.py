@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Atualiza o SVG com o calendário de contribuições do mês corrente."""
+"""Gera um cartão SVG de contribuições mensal com visual consistente ao perfil."""
 import datetime as dt
 import json
 import os
@@ -7,7 +7,7 @@ import urllib.request
 from pathlib import Path
 
 LOGIN = "jonaskenpachi3-design"
-TOKEN = os.environ.get("GH_TOKEN")
+TOKEN = (os.environ.get("GH_TOKEN") or "").strip()
 if not TOKEN:
     raise SystemExit("Configure o secret GH_TOKEN com um token GitHub de leitura.")
 
@@ -39,54 +39,67 @@ with urllib.request.urlopen(req, timeout=30) as response:
     payload = json.load(response)
 if payload.get("errors"):
     raise SystemExit(json.dumps(payload["errors"], ensure_ascii=False))
-calendar = payload["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+user = payload.get("data", {}).get("user")
+if not user:
+    raise SystemExit("Usuário não encontrado ou token sem permissão de leitura.")
+calendar = user["contributionsCollection"]["contributionCalendar"]
 days = [d for week in calendar["weeks"] for d in week["contributionDays"]]
 days = [d for d in days if month_start.isoformat() <= d["date"] <= today.isoformat()]
 counts = [int(d["contributionCount"]) for d in days]
 active_days = sum(c > 0 for c in counts)
-peak = max(counts, default=0)
 weekday_totals = [0] * 7
+by_date = {}
 for day in days:
-    weekday_totals[int(day["weekday"])] += int(day["contributionCount"])
+    count = int(day["contributionCount"])
+    weekday_totals[int(day["weekday"])] += count
+    by_date[day["date"]] = count
 weekday_names = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"]
-best_day = weekday_names[max(range(7), key=lambda i: weekday_totals[i])] if days else "—"
-streak = 0
-for day in reversed(days):
-    if int(day["contributionCount"]) > 0:
-        streak += 1
-    else:
-        break
+best_day = weekday_names[max(range(7), key=lambda i: weekday_totals[i])] if any(weekday_totals) else "—"
 
-# Grade semanal: colunas = semanas; linhas = dias da semana.
-first_weekday = month_start.weekday()
+# Sequência corrente: se hoje ainda não houve atividade, considera o dia anterior.
+cursor = today if by_date.get(today.isoformat(), 0) else today - dt.timedelta(days=1)
+streak = 0
+while cursor >= month_start and by_date.get(cursor.isoformat(), 0) > 0:
+    streak += 1
+    cursor -= dt.timedelta(days=1)
+
+# Grade semanal com domingo na primeira linha.
+first_offset = (month_start.weekday() + 1) % 7
+palette = ["#172536", "#164e63", "#0e7490", "#0891b2", "#67e8f9"]
 cells = []
-for d in days:
-    date = dt.date.fromisoformat(d["date"])
-    col = (first_weekday + date.day - 1) // 7
-    row = (date.weekday() + 1) % 7
-    count = int(d["contributionCount"])
+for day in days:
+    date = dt.date.fromisoformat(day["date"])
+    index = first_offset + date.day - 1
+    col, row = index // 7, index % 7
+    count = int(day["contributionCount"])
     level = 0 if count == 0 else 1 if count <= 2 else 2 if count <= 5 else 3 if count <= 9 else 4
-    palette = ["#1e293b", "#134e4a", "#0f766e", "#14b8a6", "#5eead4"]
-    x, y = 42 + col * 24, 108 + row * 23
-    cells.append(f'<rect x="{x}" y="{y}" width="17" height="17" rx="4" fill="{palette[level]}"><title>{date.isoformat()}: {count} contribuições</title></rect>')
+    x, y = 44 + col * 25, 153 + row * 23
+    cells.append(
+        f'<rect x="{x}" y="{y}" width="17" height="17" rx="4" fill="{palette[level]}">'
+        f'<title>{date.isoformat()}: {count} contribuições</title></rect>'
+    )
 grid = "".join(cells)
-svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="310" viewBox="0 0 1000 310" role="img" aria-labelledby="title desc">
-<title id="title">Contribuições de {today.strftime('%B %Y')}</title>
-<desc id="desc">{calendar['totalContributions']} contribuições no mês; {active_days} dias ativos; sequência atual de {streak} dias.</desc>
-<rect x="4" y="4" width="992" height="302" rx="22" fill="#101827" stroke="#334155" stroke-width="2"/>
-<text x="32" y="43" fill="#f8fafc" font-family="Arial" font-size="21" font-weight="700">ATIVIDADE NO GITHUB • {today.strftime('%m/%Y')}</text>
-<text x="32" y="78" fill="#5eead4" font-family="Arial" font-size="25" font-weight="700">{calendar['totalContributions']}</text>
-<text x="32" y="97" fill="#94a3b8" font-family="Arial" font-size="12">contribuições no mês</text>
-<text x="270" y="78" fill="#f8fafc" font-family="Arial" font-size="25" font-weight="700">{active_days}</text>
-<text x="270" y="97" fill="#94a3b8" font-family="Arial" font-size="12">dias ativos</text>
-<text x="470" y="78" fill="#f8fafc" font-family="Arial" font-size="25" font-weight="700">{streak}</text>
-<text x="470" y="97" fill="#94a3b8" font-family="Arial" font-size="12">dias seguidos neste mês</text>
-<text x="710" y="78" fill="#f8fafc" font-family="Arial" font-size="25" font-weight="700">{best_day}</text>
-<text x="710" y="97" fill="#94a3b8" font-family="Arial" font-size="12">dia com mais contribuições</text>
+month_label = today.strftime("%m / %Y")
+svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="t d">
+<title id="t">Atividade no GitHub — {month_label}</title>
+<desc id="d">{calendar['totalContributions']} contribuições no mês, {active_days} dias ativos e sequência corrente de {streak} dias.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101b29"/><stop offset="1" stop-color="#0b1420"/></linearGradient></defs>
+<style>@media(prefers-reduced-motion:reduce){{*{{animation:none!important}}}}</style>
+<rect x="3" y="3" width="1194" height="354" rx="16" fill="url(#bg)" stroke="#29384b"/>
+<text x="34" y="43" fill="#e2e8f0" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">ATIVIDADE NO GITHUB</text>
+<text x="1166" y="42" text-anchor="end" fill="#8193a8" font-family="Arial,sans-serif" font-size="12">{month_label}</text>
+<path d="M34 58H1166" stroke="#29384b"/>
+<text x="36" y="103" fill="#67e8f9" font-family="Arial,sans-serif" font-size="31" font-weight="700">{calendar['totalContributions']}</text>
+<text x="36" y="124" fill="#8294aa" font-family="Arial,sans-serif" font-size="12">CONTRIBUIÇÕES</text>
+<text x="270" y="103" fill="#f1f5f9" font-family="Arial,sans-serif" font-size="31" font-weight="700">{active_days}</text>
+<text x="270" y="124" fill="#8294aa" font-family="Arial,sans-serif" font-size="12">DIAS ATIVOS</text>
+<text x="490" y="103" fill="#f1f5f9" font-family="Arial,sans-serif" font-size="31" font-weight="700">{streak}</text>
+<text x="490" y="124" fill="#8294aa" font-family="Arial,sans-serif" font-size="12">DIAS DE SEQUÊNCIA*</text>
+<text x="760" y="103" fill="#f1f5f9" font-family="Arial,sans-serif" font-size="25" font-weight="700">{best_day}</text>
+<text x="760" y="124" fill="#8294aa" font-family="Arial,sans-serif" font-size="12">DIA MAIS ATIVO</text>
 {grid}
-<text x="42" y="286" fill="#64748b" font-family="Arial" font-size="12">Menos</text>
-<rect x="91" y="274" width="14" height="14" rx="3" fill="#1e293b"/><rect x="112" y="274" width="14" height="14" rx="3" fill="#134e4a"/><rect x="133" y="274" width="14" height="14" rx="3" fill="#0f766e"/><rect x="154" y="274" width="14" height="14" rx="3" fill="#14b8a6"/><rect x="175" y="274" width="14" height="14" rx="3" fill="#5eead4"/>
-<text x="198" y="286" fill="#64748b" font-family="Arial" font-size="12">Mais</text>
+<text x="44" y="337" fill="#71839a" font-family="Arial,sans-serif" font-size="11">* Sequência contabilizada dentro do mês atual.</text>
+<g transform="translate(1000 324)"><text x="0" y="10" fill="#71839a" font-family="Arial,sans-serif" font-size="11">MENOS</text><rect x="52" y="0" width="13" height="13" rx="3" fill="#172536"/><rect x="72" y="0" width="13" height="13" rx="3" fill="#164e63"/><rect x="92" y="0" width="13" height="13" rx="3" fill="#0e7490"/><rect x="112" y="0" width="13" height="13" rx="3" fill="#0891b2"/><rect x="132" y="0" width="13" height="13" rx="3" fill="#67e8f9"/><text x="153" y="10" fill="#71839a" font-family="Arial,sans-serif" font-size="11">MAIS</text></g>
 </svg>
 """
 Path("assets/contributions.svg").write_text(svg, encoding="utf-8")
