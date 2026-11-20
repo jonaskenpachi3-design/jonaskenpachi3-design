@@ -1,27 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
-<title id="title">Jonas — desenvolvedor em construção</title><desc id="desc">Banner escuro moderno com apresentação, código e detalhes em ciano e violeta.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="310" viewBox="0 0 1200 310" role="img" aria-labelledby="t d">
+<title id="t">Jonas | Desenvolvedor web</title><desc id="d">Apresentação minimalista de Jonas com estética editorial escura.</desc>
 <defs>
- <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080f1e"/><stop offset=".58" stop-color="#10172b"/><stop offset="1" stop-color="#1b1232"/></linearGradient>
- <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#45e3cf"/><stop offset="1" stop-color="#9b8cff"/></linearGradient>
- <radialGradient id="glow"><stop stop-color="#5b5ce2" stop-opacity=".34"/><stop offset="1" stop-color="#5b5ce2" stop-opacity="0"/></radialGradient>
- <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#94a3b8" stroke-opacity=".07"/></pattern>
- <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1018"/><stop offset="1" stop-color="#111c2a"/></linearGradient>
+ <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#67e8f9"/><stop offset="1" stop-color="#818cf8"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#94a3b8" stroke-opacity=".045"/></pattern>
 </defs>
 <style>
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(8px,-9px)}}
-@keyframes blink{0%,48%,100%{opacity:1}50%,96%{opacity:.25}}
-.in{opacity:0;animation:rise .7s ease-out forwards}.d1{animation-delay:.12s}.d2{animation-delay:.25s}.d3{animation-delay:.38s}
-.cursor{animation:blink 1.1s step-end infinite}.orb{animation:drift 7s ease-in-out infinite}
+@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{opacity:.5}50%{opacity:1}}
+.a{opacity:0;animation:enter .7s ease-out forwards}.b{animation-delay:.16s}.c{animation-delay:.3s}.accent{animation:glow 5s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
-<rect x="3" y="3" width="1194" height="334" rx="28" fill="url(#bg)" stroke="#34415b" stroke-width="2"/>
-<rect x="4" y="4" width="1192" height="332" rx="27" fill="url(#grid)"/>
-<circle cx="1000" cy="50" r="210" fill="url(#glow)" filter="url(#blur)"/>
-<circle cx="1120" cy="300" r="150" fill="#16cbb5" opacity=".08" filter="url(#blur)"/>
-<g class="in"><rect x="58" y="48" width="206" height="30" rx="15" fill="#132b37" stroke="#236d70"/><circle cx="76" cy="63" r="4" fill="#4ce2c9"/><text x="90" y="68" fill="#9cebdd" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2">DEV • PORTFÓLIO</text></g>
-<g class="in d1"><text x="58" y="145" fill="#f8fafc" font-family="Arial,sans-serif" font-size="51" font-weight="700">Olá, mundo. Eu sou</text><text x="58" y="207" fill="url(#accent)" font-family="Arial,sans-serif" font-size="57" font-weight="800">jonaskenpachi3</text><rect x="60" y="225" width="5" height="29" rx="2" fill="#53e1cf"/><text x="80" y="247" fill="#cbd5e1" font-family="Arial,sans-serif" font-size="19">Transformando ideias em experiências digitais.</text></g>
-<g class="in d2"><rect x="60" y="282" width="122" height="30" rx="15" fill="#17283a" stroke="#34516a"/><text x="121" y="302" text-anchor="middle" fill="#b9c9dc" font-family="Arial,sans-serif" font-size="12">CRIATIVIDADE</text><rect x="192" y="282" width="112" height="30" rx="15" fill="#17283a" stroke="#34516a"/><text x="248" y="302" text-anchor="middle" fill="#b9c9dc" font-family="Arial,sans-serif" font-size="12">TECNOLOGIA</text><rect x="314" y="282" width="104" height="30" rx="15" fill="#17283a" stroke="#34516a"/><text x="366" y="302" text-anchor="middle" fill="#b9c9dc" font-family="Arial,sans-serif" font-size="12">EVOLUÇÃO</text></g>
-<g class="orb"><rect x="790" y="63" width="344" height="214" rx="18" fill="#0a1222" stroke="#3b4966" stroke-width="1.5"/><path d="M790 101H1134" stroke="#34415b"/><circle cx="814" cy="82" r="4" fill="#fb7185"/><circle cx="830" cy="82" r="4" fill="#fbbf24"/><circle cx="846" cy="82" r="4" fill="#4ade80"/><text x="870" y="87" fill="#71839d" font-family="monospace" font-size="11">about-me.js</text>
-<g font-family="monospace" font-size="15"><text x="816" y="137" fill="#c4b5fd">const</text><text x="866" y="137" fill="#e2e8f0"> developer = {</text><text x="838" y="169" fill="#67e8f9">focus:</text><text x="902" y="169" fill="#a7f3d0">'web development',</text><text x="838" y="201" fill="#67e8f9">mindset:</text><text x="922" y="201" fill="#a7f3d0">'always learning',</text><text x="838" y="233" fill="#67e8f9">status:</text><text x="910" y="233" fill="#a7f3d0">'building'</text><text x="816" y="265" fill="#e2e8f0">};<tspan class="cursor" fill="#4ce2c9"> _</tspan></text></g></g>
+<rect x="2" y="2" width="1196" height="306" rx="18" fill="url(#bg)" stroke="#29384b" stroke-width="1.5"/>
+<rect x="3" y="3" width="1194" height="304" rx="17" fill="url(#grid)"/>
+<path d="M50 55V255" stroke="#334155" stroke-width="2"/>
+<path d="M50 55V255" stroke="url(#line)" stroke-width="2.5" class="accent"/>
+<g class="a"><text x="82" y="74" fill="#8fa3b8" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="3">DESENVOLVIMENTO • TECNOLOGIA • CRIATIVIDADE</text></g>
+<g class="a b"><text x="80" y="151" fill="#f1f5f9" font-family="Arial,sans-serif" font-size="58" font-weight="700" letter-spacing="-1.5">Olá, eu sou Jonas.</text><rect x="82" y="171" width="104" height="4" rx="2" fill="url(#line)"/></g>
+<g class="a c"><text x="82" y="214" fill="#c0ccda" font-family="Arial,sans-serif" font-size="20">Desenvolvedor em evolução, criando soluções digitais</text><text x="82" y="243" fill="#c0ccda" font-family="Arial,sans-serif" font-size="20">com atenção aos detalhes e foco na experiência.</text></g>
+<g transform="translate(880 82)"><rect width="250" height="146" rx="12" fill="#0c1420" stroke="#2b3a4e"/><path d="M0 34H250" stroke="#2b3a4e"/><circle cx="19" cy="17" r="4" fill="#64748b"/><circle cx="34" cy="17" r="4" fill="#64748b"/><circle cx="49" cy="17" r="4" fill="#64748b"/><text x="20" y="66" fill="#8b9db2" font-family="monospace" font-size="12">const direction =</text><text x="20" y="91" fill="#67e8f9" font-family="monospace" font-size="15">"build with purpose";</text><text x="20" y="121" fill="#7c8da3" font-family="monospace" font-size="11">// always improving</text></g>
+<text x="82" y="282" fill="#71839a" font-family="Arial,sans-serif" font-size="11" letter-spacing="2">PORTFÓLIO PESSOAL</text>
 </svg>
