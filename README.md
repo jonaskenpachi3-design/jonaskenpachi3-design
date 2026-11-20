@@ -14,4 +14,10 @@
   <img src="./assets/contributions.svg" alt="Calendário mensal de contribuições do GitHub" width="100%" />
 </p>
 
-<p align="center"><sub>SVGs independentes, animações leves e respeito à preferência por movimento reduzido. O painel de contribuições será conectado ao GitHub Actions após configurar o segredo GH_TOKEN.</sub></p>
+<p align="center"><sub>SVGs independentes, animações leves e respeito à preferência por movimento reduzido. O calendário mensal é atualizado diariamente pelo GitHub Actions.</sub></p>
+
+### Ativar atualização das contribuições
+1. Crie um token pessoal do GitHub com acesso de leitura a dados do perfil.
+2. No repositório, abra **Settings → Secrets and variables → Actions → New repository secret**.
+3. Salve o token com o nome `GH_TOKEN`.
+4. Em **Actions**, execute **Update profile contribution graphic** uma vez para testar.
