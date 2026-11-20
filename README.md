@@ -1,16 +1,17 @@
-## Hi there 👋
+<p align="center">
+  <img src="./assets/hero.svg" alt="Cartão animado de apresentação do perfil" width="100%" />
+</p>
 
-<!--
-**jonaskenpachi3-design/jonaskenpachi3-design** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<p align="center">
+  <img src="./assets/projects.svg" alt="Projetos em destaque: Nexora, Weather Dashboard e Controle Financeiro" width="100%" />
+</p>
 
-Here are some ideas to get you started:
+<p align="center">
+  <img src="./assets/activity.svg" alt="Tecnologias presentes nos projetos públicos" width="100%" />
+</p>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<p align="center">
+  <img src="./assets/contributions.svg" alt="Calendário mensal de contribuições do GitHub" width="100%" />
+</p>
+
+<p align="center"><sub>SVGs independentes, animações leves e respeito à preferência por movimento reduzido. O painel de contribuições será conectado ao GitHub Actions após configurar o segredo GH_TOKEN.</sub></p>
