@@ -1,18 +1,18 @@
 <div align="center">
 
-<img src="./assets/hero.svg" width="100%" alt="Jonas — desenvolvedor web" />
+<img src="./assets/hero.svg?v=3" width="100%" alt="Jonas — desenvolvedor web" />
 
 <br/>
 
-<img src="./assets/projects.svg" width="100%" alt="Projetos em destaque" />
+<img src="./assets/projects.svg?v=3" width="100%" alt="Projetos em destaque" />
 
 <br/>
 
-<img src="./assets/activity.svg" width="100%" alt="Tecnologias e ferramentas" />
+<img src="./assets/activity.svg?v=3" width="100%" alt="Tecnologias e ferramentas" />
 
 <br/>
 
-<img src="./assets/contributions.svg" width="100%" alt="Atividade de contribuições no GitHub" />
+<img src="./assets/contributions.svg?v=3" width="100%" alt="Atividade de contribuições no GitHub" />
 
 </div>
 
