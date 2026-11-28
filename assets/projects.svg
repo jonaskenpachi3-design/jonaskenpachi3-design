@@ -1,8 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="316" viewBox="0 0 1200 316" role="img" aria-labelledby="t d">
-<title id="t">Projetos em destaque</title><desc id="d">Orvix, Nexora e Weatherly.</desc>
-<text x="8" y="28" fill="#e7f0ed" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="1.8">PROJETOS EM DESTAQUE</text><text x="1192" y="27" text-anchor="end" fill="#83a2a5" font-family="Arial,sans-serif" font-size="12" letter-spacing="1.5">SELECTED WORK / 2026</text><path d="M8 44H1192" stroke="#304650"/>
-<g font-family="Arial,sans-serif">
-<rect x="8" y="66" width="378" height="238" rx="16" fill="#192832" stroke="#3b5660" stroke-width="1.5"/><path d="M24 67H370" stroke="#6ee7c8" stroke-width="4" stroke-linecap="round"/><text x="32" y="105" fill="#7fa4a5" font-size="12" font-weight="700" letter-spacing="1.2">01  /  FINTECH</text><text x="32" y="154" fill="#f1f6f4" font-size="32" font-weight="700">Orvix</text><text x="32" y="185" fill="#c0d0d0" font-size="16">Plataforma de inteligência financeira</text><text x="32" y="209" fill="#c0d0d0" font-size="16">com dashboard, metas e insights.</text><path d="M32 244H350" stroke="#344d56"/><text x="32" y="277" fill="#8fb6ad" font-size="12" font-weight="700" letter-spacing=".7">ANGULAR · NODE.JS · POSTGRESQL</text><text x="350" y="277" text-anchor="end" fill="#6ee7c8" font-size="13">01</text>
-<rect x="411" y="66" width="378" height="238" rx="16" fill="#192832" stroke="#3b5660" stroke-width="1.5"/><path d="M427 67H773" stroke="#70c6d5" stroke-width="4" stroke-linecap="round"/><text x="435" y="105" fill="#7fa4a5" font-size="12" font-weight="700" letter-spacing="1.2">02  /  PRODUTIVIDADE</text><text x="435" y="154" fill="#f1f6f4" font-size="32" font-weight="700">Nexora</text><text x="435" y="185" fill="#c0d0d0" font-size="16">Sistema full stack de gerenciamento</text><text x="435" y="209" fill="#c0d0d0" font-size="16">de tarefas, prioridades e prazos.</text><path d="M435 244H757" stroke="#344d56"/><text x="435" y="277" fill="#8fb6ad" font-size="12" font-weight="700" letter-spacing=".7">NODE.JS · EXPRESS · POSTGRESQL</text><text x="757" y="277" text-anchor="end" fill="#70c6d5" font-size="13">02</text>
-<rect x="814" y="66" width="378" height="238" rx="16" fill="#192832" stroke="#3b5660" stroke-width="1.5"/><path d="M830 67H1176" stroke="#9bb8a5" stroke-width="4" stroke-linecap="round"/><text x="838" y="105" fill="#7fa4a5" font-size="12" font-weight="700" letter-spacing="1.2">03  /  CLIMA &amp; DADOS</text><text x="838" y="154" fill="#f1f6f4" font-size="32" font-weight="700">Weatherly</text><text x="838" y="185" fill="#c0d0d0" font-size="16">Dashboard meteorológico com dados</text><text x="838" y="209" fill="#c0d0d0" font-size="16">em tempo real e previsão de 5 dias.</text><path d="M838 244H1160" stroke="#344d56"/><text x="838" y="277" fill="#8fb6ad" font-size="12" font-weight="700" letter-spacing=".7">HTML · CSS · JAVASCRIPT</text><text x="1160" y="277" text-anchor="end" fill="#9bb8a5" font-size="13">03</text>
-</g></svg>
+<title id="t">Projetos em destaque</title>
+<desc id="d">Orvix, Nexora e Weatherly.</desc>
+<defs>
+  <linearGradient id="cardbg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1c2d38"/><stop offset="1" stop-color="#162630"/></linearGradient>
+  <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <radialGradient id="g1" cx="1" cy="0" r="1"><stop stop-color="#6ee7c8" stop-opacity=".16"/><stop offset="1" stop-color="#6ee7c8" stop-opacity="0"/></radialGradient>
+  <radialGradient id="g2" cx="1" cy="0" r="1"><stop stop-color="#70c6d5" stop-opacity=".16"/><stop offset="1" stop-color="#70c6d5" stop-opacity="0"/></radialGradient>
+  <radialGradient id="g3" cx="1" cy="0" r="1"><stop stop-color="#9bb8a5" stop-opacity=".16"/><stop offset="1" stop-color="#9bb8a5" stop-opacity="0"/></radialGradient>
+  <clipPath id="c1"><rect x="8" y="66" width="378" height="238" rx="16"/></clipPath>
+  <clipPath id="c2"><rect x="411" y="66" width="378" height="238" rx="16"/></clipPath>
+  <clipPath id="c3"><rect x="814" y="66" width="378" height="238" rx="16"/></clipPath>
+</defs>
+<style>
+  .f{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}
+  .fb{transform-box:fill-box}
+  @keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  @keyframes float{from{transform:translateY(0)}to{transform:translateY(-4px)}}
+  @keyframes sweep{0%{transform:translateX(0) skewX(-18deg)}35%,100%{transform:translateX(620px) skewX(-18deg)}}
+  @keyframes ring{0%,100%{stroke-opacity:.55}50%{stroke-opacity:1}}
+  @keyframes nudge{0%,100%{transform:translate(0,0)}50%{transform:translate(2px,-2px)}}
+  .card{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+  .float{animation:float 5s ease-in-out infinite alternate}
+  .bar{stroke-dasharray:1;animation:draw 1.1s cubic-bezier(.2,.7,.2,1) both}
+  .sheen{animation:sweep 8s ease-in-out infinite}
+  .arrow{animation:nudge 3s ease-in-out infinite}
+  .num{animation:ring 3.5s ease-in-out infinite}
+  .head{animation:fade 1s ease both}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<g class="f head">
+  <text x="8" y="28" fill="#e7f0ed" font-size="20" font-weight="700" letter-spacing="1.8">PROJETOS EM DESTAQUE</text>
+  <text x="1192" y="27" text-anchor="end" fill="#83a2a5" font-size="12" letter-spacing="1.5">SELECTED WORK / 2026</text>
+  <path d="M8 44H1192" stroke="#304650"/>
+</g>
+
+<g class="f">
+  <!-- 01 -->
+  <g class="card" style="animation-delay:.25s"><g class="float" style="animation-delay:-1s">
+    <rect x="8" y="66" width="378" height="238" rx="16" fill="url(#cardbg)" stroke="#3b5660" stroke-width="1.5"/>
+    <rect x="8" y="66" width="378" height="238" rx="16" fill="url(#g1)"/>
+    <g clip-path="url(#c1)"><rect class="sheen" x="-200" y="60" width="150" height="250" fill="url(#sheen)" style="animation-delay:1.5s"/></g>
+    <path class="bar" pathLength="1" d="M24 67H370" stroke="#6ee7c8" stroke-width="4" stroke-linecap="round" style="animation-delay:.7s"/>
+    <text x="32" y="105" fill="#7fa4a5" font-size="12" font-weight="700" letter-spacing="1.2">01  /  FINTECH</text>
+    <g class="arrow"><circle cx="352" cy="100" r="13" fill="none" stroke="#3b5660"/><path d="M347 105L357 95M351 95H357V101" fill="none" stroke="#6ee7c8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text x="32" y="154" fill="#f1f6f4" font-size="32" font-weight="700">Orvix</text>
+    <text x="32" y="185" fill="#c0d0d0" font-size="16">Plataforma de inteligência financeira</text>
+    <text x="32" y="209" fill="#c0d0d0" font-size="16">com dashboard, metas e insights.</text>
+    <path d="M32 244H350" stroke="#344d56"/>
+    <text x="32" y="277" fill="#8fb6ad" font-size="12" font-weight="700" letter-spacing=".7">ANGULAR · NODE.JS · POSTGRESQL</text>
+    <text class="num" x="350" y="277" text-anchor="end" fill="#6ee7c8" font-size="13">01</text>
+  </g></g>
+
+  <!-- 02 -->
+  <g class="card" style="animation-delay:.45s"><g class="float" style="animation-delay:-2.5s">
+    <rect x="411" y="66" width="378" height="238" rx="16" fill="url(#cardbg)" stroke="#3b5660" stroke-width="1.5"/>
+    <rect x="411" y="66" width="378" height="238" rx="16" fill="url(#g2)"/>
+    <g clip-path="url(#c2)"><rect class="sheen" x="203" y="60" width="150" height="250" fill="url(#sheen)" style="animation-delay:3s"/></g>
+    <path class="bar" pathLength="1" d="M427 67H773" stroke="#70c6d5" stroke-width="4" stroke-linecap="round" style="animation-delay:.9s"/>
+    <text x="435" y="105" fill="#7fa4a5" font-size="12" font-weight="700" letter-spacing="1.2">02  /  PRODUTIVIDADE</text>
+    <g class="arrow" style="animation-delay:-1s"><circle cx="755" cy="100" r="13" fill="none" stroke="#3b5660"/><path d="M750 105L760 95M754 95H760V101" fill="none" stroke="#70c6d5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text x="435" y="154" fill="#f1f6f4" font-size="32" font-weight="700">Nexora</text>
+    <text x="435" y="185" fill="#c0d0d0" font-size="16">Sistema full stack de gerenciamento</text>
+    <text x="435" y="209" fill="#c0d0d0" font-size="16">de tarefas, prioridades e prazos.</text>
+    <path d="M435 244H757" stroke="#344d56"/>
+    <text x="435" y="277" fill="#8fb6ad" font-size="12" font-weight="700" letter-spacing=".7">NODE.JS · EXPRESS · POSTGRESQL</text>
+    <text class="num" x="757" y="277" text-anchor="end" fill="#70c6d5" font-size="13" style="animation-delay:-1s">02</text>
+  </g></g>
+
+  <!-- 03 -->
+  <g class="card" style="animation-delay:.65s"><g class="float" style="animation-delay:-4s">
+    <rect x="814" y="66" width="378" height="238" rx="16" fill="url(#cardbg)" stroke="#3b5660" stroke-width="1.5"/>
+    <rect x="814" y="66" width="378" height="238" rx="16" fill="url(#g3)"/>
+    <g clip-path="url(#c3)"><rect class="sheen" x="606" y="60" width="150" height="250" fill="url(#sheen)" style="animation-delay:4.5s"/></g>
+    <path class="bar" pathLength="1" d="M830 67H1176" stroke="#9bb8a5" stroke-width="4" stroke-linecap="round" style="animation-delay:1.1s"/>
+    <text x="838" y="105" fill="#7fa4a5" font-size="12" font-weight="700" letter-spacing="1.2">03  /  CLIMA &amp; DADOS</text>
+    <g class="arrow" style="animation-delay:-2s"><circle cx="1158" cy="100" r="13" fill="none" stroke="#3b5660"/><path d="M1153 105L1163 95M1157 95H1163V101" fill="none" stroke="#9bb8a5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text x="838" y="154" fill="#f1f6f4" font-size="32" font-weight="700">Weatherly</text>
+    <text x="838" y="185" fill="#c0d0d0" font-size="16">Dashboard meteorológico com dados</text>
+    <text x="838" y="209" fill="#c0d0d0" font-size="16">em tempo real e previsão de 5 dias.</text>
+    <path d="M838 244H1160" stroke="#344d56"/>
+    <text x="838" y="277" fill="#8fb6ad" font-size="12" font-weight="700" letter-spacing=".7">HTML · CSS · JAVASCRIPT</text>
+    <text class="num" x="1160" y="277" text-anchor="end" fill="#9bb8a5" font-size="13" style="animation-delay:-2s">03</text>
+  </g></g>
+</g>
+</svg>
